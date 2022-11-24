@@ -1,26 +1,28 @@
 const object = {
   a: 1,
-  b: 2,
-  c: 3,
+  b: 5,
+  c: 6,
   d: 1,
-  e: 3, 
+  e: 1, 
 };
 
-function getInvertObject() {
-  const invertObject = {};
+function getInvertedObject() {
+  const invertedObject = {};
 
   for (let key in object) {
-    if (invertObject[object[key]] !== undefined) {
-      invertObject[object[key]] = [invertObject[object[key]]];
-      invertObject[object[key]].push(key);
+    if (invertedObject[object[key]] !== undefined) {
+      if (!Array.isArray(invertedObject[object[key]])) {
+      invertedObject[object[key]] = [invertedObject[object[key]]];
+      }
+      invertedObject[object[key]].push(key);
     } else {
-    invertObject[object[key]] = key;
+    invertedObject[object[key]] = key;
     }
   }
   
-  return invertObject;
+  return invertedObject;
 }
 
-const result = getInvertObject();
+const result = getInvertedObject();
 
 console.log(result);
