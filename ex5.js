@@ -3,17 +3,18 @@ const object = {
   b: 2,
   c: 3,
   d: 1,
-  
+  e: 3, 
 };
 
 function getInvertObject() {
   const invertObject = {};
 
   for (let key in object) {
-    if (invertObject[object[key]] === undefined) {    
-      invertObject[object[key]] = [key];
-    } else {
+    if (invertObject[object[key]] !== undefined) {
+      invertObject[object[key]] = [invertObject[object[key]]];
       invertObject[object[key]].push(key);
+    } else {
+    invertObject[object[key]] = key;
     }
   }
   
